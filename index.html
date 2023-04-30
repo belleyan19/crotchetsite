@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Belle's Crochet World</title>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>        
+        <!-- CSS only -->
+        <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+.feature-products{
+    background-color:#F3F3F3;
+    font-family:Roboto;
+    position:relative;
+}
+
+.product-content .title{
+    margin-top:40px;
+    text-align:center;
+    font-family:Roboto;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+
+.feature-title{
+    font-weight:600;
+    font-family: Sacramento;
+    font-size: 38px;
+    letter-spacing: 1px;
+    color:rgb(191, 13, 236);
+    margin-top:90px;
+    margin-bottom:50px;
+}
+
+.feature-title a {
+    padding: 0 20px;
+    font-size:16px;
+    color:rgb(200, 15, 123);
+}
+
+.feature-active{
+    color:#000 !important;
+    font-weight:700;
+}
+
+.price, .rating{
+    display:inline-block;
+    margin:0 auto;
+    width:100%;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+
+.product-grid{
+    border:1px solid transparent;
+    font-family: 'Roboto', sans-serif;
+    padding:10px 10px;
+    transition: all 0.5s;
+    margin-bottom:80px;
+    margin-top:40px;
+}
+
+.product-grid .product-image{
+    position: relative;
+    overflow: hidden;
+  
+    
+}
+.product-grid .product-image a.image{ display: block; }
+.product-grid .product-image img{
+    width: 100%;
+    height: auto;
+  border-radius: 5px;
+   
+}
+.product-grid .add-to-cart{
+    color: #fff;
+    background: #222;
+    font-size: 34px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 5px;
+    display: block;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    transition: all ease-in-out 0.35s;
+    width:20%;
+    opacity: 0;
+
+}
+.product-grid:hover .add-to-cart{ opacity:1; }
+.product-grid .add-to-cart:after{
+    content: "\f101";
+    color: #fff;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    display: inline-block;
+    opacity: 0;
+    transition: all 0.5s;
+    
+}
+.product-grid .add-to-cart:hover:after{
+    padding-left: 10px;
+    opacity: 1;
+}
+.product-grid .product-content{ position: relative; }
+.product-grid .product-stock{
+    color: #999;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 35px;
+    border-bottom: 1px solid #c1c1c1;
+    display: block;
+    margin: 0 0 15px;
+}
+.product-grid .icon{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    transition: all ease-in-out 0.35s;
+}
+.product-grid:hover .icon{
+    opacity: 1;
+    top: 8px;
+}
+.product-grid .icon li{ display: inline-block; }
+.product-grid .icon li a{
+    color: #222;
+    font-size: 16px;
+    margin: 0 4px;
+}
+.product-grid .icon li a:hover{ color: var(--main-color); }
+.product-grid .title{
+     font-family:Roboto;
+    font-size:15px;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:2px;
+}
+.product-grid .title a{
+    color: #222;
+    transition: all 0.5s ease-out 0s;
+}
+.product-grid .title a:hover{ color: var(--main-color); }
+.product-grid .category{
+    font-size: 18px;
+    margin: 0 0 3px;
+    display: block;
+}
+.product-grid .category a{
+    color: #222;
+    transition: all 0.3s ease 0s;
+}
+.product-grid .category a:hover{ color: var(--main-color); }
+.product-grid .price{
+    font-family:Roboto;
+    font-size:14px;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:0px;
+    display: inline-block;
+    color:#000;
+}
+.product-grid .rating{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: right;
+}
+.product-grid .rating li{
+    color: #FFB14B;
+    font-size: 13px;
+    display: inline-block;
+}
+
+
+.action-buttons{
+    display:inline-block;
+    margin-top:50px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.action-buttons .btn-outline{
+    padding: 6px 20px;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    margin: 0 4px;
+}
+
+
+.action-buttons .btn-outline-icon{
+    padding: 6px 10px;
+    border-radius:5px;
+    border: 2px solid #ccc;
+    margin: 0 4px;
+}
+
+.action-buttons a{
+    color: #000;
+    font-family:Roboto;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing:1px;
+    cursor:pointer;
+  transition: .4s;
+}
+
+.action-buttons a:hover{
+    color: #fff !important;
+    background:#000;
+   
+}
+
+.product-grid .rating li.disable{ color: #c1c1c1; }
+@media only screen and (max-width:990px){
+    .product-grid{ margin-bottom: 30px; }
+}
+
+.promote-message {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.customer-form {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+        </style>
+        <script language="javascript">
+function changeAlpha(imageId, alphaValue) {
+    var element = document.getElementById(imageId);
+    element.style.opacity = alphaValue;
+}            
+        </script>
+    </head>
+    <body>
+        <section class ="feature-products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center feature-title">
+                        <div style="font-family: Sacramento; font-size: 60px; color:rgb(191, 13, 236); letter-spacing: 1px;">Belle's Crotchet World</div>
+                        <a class="feature-active">
+
+                        </a> <a href="#" class="promote-message">BEST SELLER</a> | <a href="#" class="promote-message">NEW ARRIVAL</a> | <a href="#" class="promote-message">SEASONAL ITEMS</a> 
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_1', '0.5');" onmouseleave="changeAlpha('product_1', '1.0');">
+                                    <img id="product_1" style="width: 300px;" src="bear.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Graduation Bear</a></h3>                                
+                                    <div class="price">£5.60</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_2', '0.5');" onmouseleave="changeAlpha('product_2', '1.0');">
+                                    <img id="product_2" style="width: 300px;" src="birdie.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">                                
+                                <h3 class="title"><a href="#">Birdie</a></h3>                                
+                                    <div class="price">£4.60</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>            
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_3', '0.5');" onmouseleave="changeAlpha('product_3', '1.0');">
+                                    <img id="product_3" style="width: 300px;" src="birthday_cake.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">                                
+                                <h3 class="title"><a href="#">Birthday Cake</a></h3>                                
+                                    <div class="price">£6.60</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>            
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_4', '0.5');" onmouseleave="changeAlpha('product_4', '1.0');">
+                                    <img id="product_4" style="width: 300px;" src="chic.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Chicken</a></h3>                               
+                                    <div class="price">£1.50</div>
+                            </div>            
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_5', '0.5');" onmouseleave="changeAlpha('product_5', '1.0');">
+                                    <img id="product_5" style="width: 300px;" src="christmas_tree.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Christmas Tree</a></h3>                               
+                                <div class="price">£3.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>   
+                      
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_6', '0.5');" onmouseleave="changeAlpha('product_6', '1.0');">
+                                    <img id="product_6" style="width: 300px;" src="froggie.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Little Frog</a></h3>                               
+                                <div class="price">£2.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>   
+            
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_7', '0.5');" onmouseleave="changeAlpha('product_7', '1.0');">
+                                    <img id="product_7" style="width: 300px;" src="grad_chic.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Graduation Chicken</a></h3>                               
+                                <div class="price">£4.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>   
+            
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_8', '0.5');" onmouseleave="changeAlpha('product_8', '1.0');">
+                                    <img id="product_8" style="width: 300px;" src="pumpkin.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Pumpkin</a></h3>                               
+                                <div class="price">£5.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>   
+            
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_9', '0.5');" onmouseleave="changeAlpha('product_9', '1.0');">
+                                    <img id="product_9" style="width: 300px;" src="snowflake.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Snowflake</a></h3>                               
+                                <div class="price">£1.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>   
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="#" class="image" style="background-color:#F3F3F3;" onmouseover="changeAlpha('product_10', '0.5');" onmouseleave="changeAlpha('product_10', '1.0');">
+                                    <img id="product_10" style="width: 300px;" src="winnie.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Pooh</a></h3>                               
+                                <div class="price">£4.50</div>
+                            </div>
+                            <div class="action-buttons">
+                                <a class="btn-outline">BUY</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Customer Form -->
+                <div class="row">
+                    <div class="col-md-12 text-center feature-title customer-form">Contact Details</div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        <h3> <div style="font-family:'Courier New', Courier, monospace; font-size: 20px;">Name</h3>
+                    </div>
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        <h3> <div style="font-family:'Courier New', Courier, monospace; font-size: 20px;"><input type="text"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        <h3> <div style="font-family:'Courier New', Courier, monospace; font-size: 20px;"> Email</h3>
+                    </div>   
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        <h3> <div style="font-family:'Courier New', Courier, monospace; font-size: 20px;"><input type="text"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        &nbsp;
+                    </div>   
+                    <div class="col-md-2 col-sm-4 text-shadow">
+                        <button type="button" class="btn btn-secondary">Contact me</button>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 text-center"><img src="belle_logo.png" height="200px"></div>
+                </div>                     
+                </div>   
+            </div>
+        </section>
+    </body>
+</html>
